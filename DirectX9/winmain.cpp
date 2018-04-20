@@ -9,8 +9,6 @@
 #include"Texture.h"
 #include"DirectInput.h"
 
-#include"GameState.h"
-
 //ウィンドウプロシージャ
 LRESULT CALLBACK WndPrc
 (
@@ -295,9 +293,6 @@ int _stdcall WinMain
 
 	MSG msg = {};
 
-	GameState gameState;
-	gameState.Init();
-
 	//quitメッセージが出てくるまでループを繰り返す
 	//quitメッセージは上記のウィンドウプロシージャから送信
 	//送信の条件などはウィンドウプロシージャを確認
@@ -340,8 +335,6 @@ int _stdcall WinMain
 			{
 				//バックバッファのクリア
 				d3d.ClearScreen();
-
-				gameState.Update();
 
 				//描画終了の合図
 				d3d.EndScene();

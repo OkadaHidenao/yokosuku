@@ -152,7 +152,6 @@
   <ItemGroup>
     <ClCompile Include="Direct3D.cpp" />
     <ClCompile Include="DirectInput.cpp" />
-    <ClCompile Include="GameState.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="winmain.cpp" />
@@ -160,7 +159,6 @@
   <ItemGroup>
     <ClInclude Include="Direct3D.h" />
     <ClInclude Include="DirectInput.h" />
-    <ClInclude Include="GameState.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="Texture.h" />
   </ItemGroup>
