@@ -4,10 +4,7 @@
 
 #include <tchar.h>
 
-#include"Direct3D.h"
-#include"Sprite.h"
-#include"Texture.h"
-#include"DirectInput.h"
+#include"GameState.h"
 
 //ウィンドウプロシージャ
 LRESULT CALLBACK WndPrc
@@ -150,8 +147,8 @@ HRESULT MakeWindow
 	 HWND &refHWnd,	//ウィンドウの識別子
 					//正しくウィンドウの作成ができたら
 					//この変数に識別子を代入する
-	int width = 1000,	//クライアント領域の幅
-	int height = 600)	//クライアント領域の高さ
+	int width = WINDOW_WIDTH,	//クライアント領域の幅
+	int height =WINDOW_HEIGHT)	//クライアント領域の高さ
 	//クライアント領域はウィンドウ全体から
 	//外枠やメニューの部分を除いた物と今は思っておけばOK
 {
@@ -274,23 +271,15 @@ int _stdcall WinMain
 	//レンダーステートの設定  αブレンド
 	d3d.SetRenderState(RENDERSTATE::RENDER_ALPHABLEND);
 
-	Sprite sprite;
-	sprite.SetAlpha(0.1);
-	sprite.SetSize(100, 100);
-	sprite.SetAngle(0);
-	sprite.SetPos(200, 200);
-
-	//テクスチャのインスタンスを作成
-	Texture texture;
-	texture.Load(_T("test.png"));//画像のロード
-	texture.SetDivide(2, 1);
-
 	DirectInput*pDi = DirectInput::GetInstansce();
 	pDi->Init(hWnd);
 
+
+	GameState gameState;
+	gameState.Init();
+
 	//メインループ
 	//メッセージループ
-
 	MSG msg = {};
 
 	//quitメッセージが出てくるまでループを繰り返す
@@ -335,6 +324,8 @@ int _stdcall WinMain
 			{
 				//バックバッファのクリア
 				d3d.ClearScreen();
+
+				gameState.Update();
 
 				//描画終了の合図
 				d3d.EndScene();
