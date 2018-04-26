@@ -4,6 +4,8 @@
 #include"Sprite.h"
 #include"Texture.h"
 
+#include"Map.h"
+
 #define WINDOW_WIDTH 1000
 #define WINDOW_HEIGHT 600
 
@@ -29,6 +31,8 @@ private:
 
 	//ボタン操作用インスタンス
 	DirectInput*pDi = DirectInput::GetInstansce();
+
+	Map map;
 
 public:
 	GameState();

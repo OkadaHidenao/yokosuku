@@ -30,6 +30,10 @@ void GameState::Init()
 	overTexture.Load(_T("Graph/over.png"));
 	overTexture.SetDivide(1, 1);
 	overTexture.SetNum(0, 0);
+
+	map.Init();
+	//マップの大きさ
+	const int stage1x = map.GetMapWidth(), stage1y = map.GetMapHeight();
 }
 void GameState::Update()
 {
@@ -60,10 +64,15 @@ void GameState::GameTitle()
 {
 	//タイトル
 	messageSprite.Draw(titleTexture);
+	if (pDi->KeyJustPressed(DIK_RETURN))
+	{
+		gameSeq = GAME_MAIN;
+	}
 }
 void GameState::GameMain()
 {
 	//メイン
+	map.Draw();
 }
 void GameState::GameClear()
 {
