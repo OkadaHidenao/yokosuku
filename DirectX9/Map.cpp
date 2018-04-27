@@ -65,25 +65,27 @@ void Map::SetMapArray(int Height, int Width, std::ifstream& data, int *array)
 void Map::Draw()
 {
 
-	scrol++;
 	for (int y = 0; y < GetMapHeight(); y++)
 	{
 		for (int x = 0; x < GetMapWidth(); x++)
 		{
 			//マップの描画
-			sprite.SetPos(PIXEL*x+scrol, PIXEL*y + WINDOW_HEIGHT / 4);
+			//描画の起点が中心なのでPIXEL/2をプラスする
+			sprite.SetPos(PIXEL*x+PIXEL/2, PIXEL*y+PIXEL/2);
 
 			//ブロックの描画
 			switch (GetMapBlock(x, y))
 			{
-			case 1:
+			case 1://壁
 				texture.SetNum(0, 0);
 				sprite.Draw(texture);
 				break;
 
-			case 0:
-				texture.SetNum(2, 0);
-				sprite.Draw(texture);
+			case 2:
+				break;
+
+			case 3:
+				break;
 
 			default:
 				break;

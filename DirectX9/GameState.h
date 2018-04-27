@@ -6,9 +6,6 @@
 
 #include"Map.h"
 
-#define WINDOW_WIDTH 1000
-#define WINDOW_HEIGHT 600
-
 enum Sequence
 {
 	GAME_TITLE,

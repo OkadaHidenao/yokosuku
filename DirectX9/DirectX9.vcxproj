@@ -154,6 +154,7 @@
     <ClCompile Include="DirectInput.cpp" />
     <ClCompile Include="GameState.cpp" />
     <ClCompile Include="Map.cpp" />
+    <ClCompile Include="Player.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="winmain.cpp" />
@@ -163,6 +164,7 @@
     <ClInclude Include="DirectInput.h" />
     <ClInclude Include="GameState.h" />
     <ClInclude Include="Map.h" />
+    <ClInclude Include="Player.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="Texture.h" />
   </ItemGroup>
