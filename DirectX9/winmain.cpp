@@ -2,8 +2,6 @@
 #include <Windows.h>
 #pragma comment(lib,"winmm.lib")
 
-#include <tchar.h>
-
 #include"GameState.h"
 
 //ウィンドウプロシージャ

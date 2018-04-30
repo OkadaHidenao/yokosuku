@@ -1,7 +1,6 @@
 #pragma once
 
-#include"Texture.h"
-#include"Sprite.h"
+#include"DirectInput.h"
 
 class Player
 {
@@ -13,11 +12,17 @@ private:
 	//プレイヤーのスピード
 	float playerSpeed;
 
-	Sprite playerSprite;
-	Texture playerTexture;
+	//ジャンプしているかどうかのフラグ
+	bool jumpFlag;
+
+	//ボタン操作用インスタンス
+	DirectInput*pDi = DirectInput::GetInstansce();
 
 public:
 	Player();
 	~Player();
+	void Control();
+	int PlayerX() { return playerX; }
+	int PlayerY() { return playerY; }
 
 };

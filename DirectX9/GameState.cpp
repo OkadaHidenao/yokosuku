@@ -3,10 +3,17 @@
 GameState::GameState()
 {
 	//コンストラクタ
+
+	pMap = new Map;
+	pPlayer = new Player;
 }
+
 GameState::~GameState()
 {
 	//デストラクタ
+
+	delete pMap;
+	delete pPlayer;
 }
 
 void GameState::Init()
@@ -31,9 +38,24 @@ void GameState::Init()
 	overTexture.SetDivide(1, 1);
 	overTexture.SetNum(0, 0);
 
-	map.Init();
-	//マップの大きさ
-	const int stage1x = map.GetMapWidth(), stage1y = map.GetMapHeight();
+	//プレイヤー系
+	playerSprite.SetAlpha(1);
+	playerSprite.SetAngle(0);
+	playerSprite.SetSize(20, 50);
+
+	playerTexture.Load(_T("Graph/player.png"));
+	playerTexture.SetDivide(1, 1);
+	playerTexture.SetNum(0, 0);
+
+	//マップチップの描画設定
+	sprite.SetAlpha(1);
+	sprite.SetAngle(0);
+	sprite.SetSize(PIXEL, PIXEL);
+
+	texture.Load(_T("Graph/tex.png"));
+	texture.SetDivide(4, 1);
+
+	pMap->Init();
 }
 void GameState::Update()
 {
@@ -72,7 +94,7 @@ void GameState::GameTitle()
 void GameState::GameMain()
 {
 	//メイン
-	map.Draw();
+	Draw();
 }
 void GameState::GameClear()
 {
@@ -81,4 +103,39 @@ void GameState::GameClear()
 void GameState::GameOver()
 {
 	//ゲームオーバー
+}
+
+void GameState::Draw()
+{
+	for (int y = 0; y < pMap->GetMapHeight(); y++)
+	{
+		for (int x = 0; x < pMap->GetMapWidth(); x++)
+		{
+			//マップの描画
+			//描画の起点が中心なのでPIXEL/2をプラスする
+			sprite.SetPos((float)(PIXEL*x + PIXEL / 2), (float)(PIXEL*y + PIXEL / 2));
+
+			//ブロックの描画
+			switch (pMap->GetMapBlock(x, y))
+			{
+			case 1://壁
+				texture.SetNum(0, 0);
+				sprite.Draw(texture);
+				break;
+
+			case 2:
+				playerSprite.SetPos((float)(PIXEL*x + PIXEL / 2 + pPlayer->PlayerX()), (float)(PIXEL*y + PIXEL / 2));
+				playerSprite.Draw(playerTexture);
+				break;
+
+			case 3:
+				break;
+
+			default:
+				break;
+			}
+		}
+	}
+
+	pPlayer->Control();
 }
