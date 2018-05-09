@@ -1,17 +1,9 @@
 #pragma once
 
-#include<tchar.h>
-
 #include"Map.h"
 #include"Player.h"
 
 #include"Direct3D.h"
-#include"Sprite.h"
-#include"Texture.h"
-
-#define PIXEL 32
-#define WINDOW_WIDTH 800
-#define WINDOW_HEIGHT 480
 
 enum Sequence
 {
@@ -33,15 +25,6 @@ private:
 	Texture clearTexture;
 	Texture overTexture;
 
-
-	//プレイヤーのスプライトとテクスチャ
-	Sprite playerSprite;
-	Texture playerTexture;
-
-	//マップチップのスプライトとテクスチャ
-	Sprite sprite;
-	Texture texture;
-
 	//インスタンス作成群
 	//ポインタで呼んで処理を軽くする
 	Map *pMap;
@@ -49,6 +32,8 @@ private:
 
 	//ボタン操作用インスタンス
 	DirectInput*pDi = DirectInput::GetInstansce();
+
+	int ScrolX, ScrolY;
 
 public:
 	GameState();
@@ -60,5 +45,4 @@ public:
 	void GameMain();
 	void GameClear();
 	void GameOver();
-	void Draw();
 };
