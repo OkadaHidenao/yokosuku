@@ -18,7 +18,7 @@ Map::~Map()
 	}
 }
 
-void Map::Init()
+void Map::Initialize()
 {
 	//マップの設定
 	std::ifstream mapText;
@@ -46,6 +46,7 @@ void Map::SetMapArray(int Height, int Width, std::ifstream& data, int *array)
 	{
 		for (int j = 0; j < Width; j++)
 		{
+			//最初に0で初期化
 			array[i*Width + j] = 0;
 		}
 	}
@@ -53,6 +54,7 @@ void Map::SetMapArray(int Height, int Width, std::ifstream& data, int *array)
 	{
 		for (int j = 0; j < Width; j++)
 		{
+			//初期化したところにmapTextのデータを入れる
 			data >> array[i*Width + j];
 		}
 	}
@@ -84,6 +86,23 @@ void Map::Draw()
 
 			default:
 				break;
+			}
+		}
+	}
+}
+
+void Map::Hit(Player* player)
+{
+	int playerNowX = player->PlayerX() / PIXEL;
+	int playerNowY = player->PlayerY() / PIXEL;
+	for (int x = 0; x < GetMapHeight(); x++)
+	{
+		for (int y = 0; y < GetMapWidth(); y++)
+		{
+			mapBlock[x + y*mapHeight];
+			if (mapBlock[playerNowX + playerNowY*mapWidth] == 1)
+			{
+
 			}
 		}
 	}

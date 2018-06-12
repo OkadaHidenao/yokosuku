@@ -274,7 +274,7 @@ int _stdcall WinMain
 
 
 	GameState gameState;
-	gameState.Init();
+	gameState.Initialize();
 
 	//メインループ
 	//メッセージループ

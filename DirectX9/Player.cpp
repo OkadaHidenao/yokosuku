@@ -18,7 +18,7 @@ Player::~Player()
 	//デストラクタ
 }
 
-void Player::Init()
+void Player::Initialize()
 {
 	//プレイヤー系
 	playerSprite.SetAlpha(1);
@@ -32,7 +32,7 @@ void Player::Init()
 
 void Player::Draw(int scrX,int scrY)
 {
-	playerSprite.SetPos(playerX - scrX, playerY - scrY);
+	playerSprite.SetPos((int)(playerX - scrX), (int)(playerY - scrY));
 	playerSprite.Draw(playerTexture);
 
 	Control();
@@ -44,12 +44,14 @@ void Player::Control()
 	if (pDi->KeyState(DIK_LEFTARROW))
 	{
 		playerX -= (int)playerSpeed;
+		playerNextX = playerX - playerSpeed;
 	}
 
 	//右押したら
 	if (pDi->KeyState(DIK_RIGHTARROW))
 	{
 		playerX += (int)playerSpeed;
+		playerNextX = playerX + playerSpeed;
 	}
 
 	//スペース押したら(ジャンプ)

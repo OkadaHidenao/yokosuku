@@ -32,10 +32,12 @@ private:
 public:
 	Player();
 	~Player();
-	void Init();
+	void Initialize();
 	void Draw(int scrX, int scrY);
 	void Control();
 	int PlayerX() { return playerX; }
 	int PlayerY() { return playerY; }
 
+	//プレイヤーの次の座標
+	int playerNextX, playerNextY;
 };

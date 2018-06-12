@@ -39,7 +39,7 @@ public:
 	GameState();
 	~GameState();
 
-	void Init();
+	void Initialize();
 	void Update();
 	void GameTitle();
 	void GameMain();

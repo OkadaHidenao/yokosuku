@@ -18,7 +18,7 @@ GameState::~GameState()
 	delete pPlayer;
 }
 
-void GameState::Init()
+void GameState::Initialize()
 {
 	//メインループ前に呼ぶ
 
@@ -40,11 +40,11 @@ void GameState::Init()
 	overTexture.SetDivide(1, 1);
 	overTexture.SetNum(0, 0);
 
-	ScrolX = pPlayer->PlayerX()-300;
-	ScrolY = pPlayer->PlayerY() - WINDOW_HEIGHT +48;
+	ScrolX = pPlayer->PlayerX() - WINDOW_WIDTH / 2;
+	ScrolY = pPlayer->PlayerY() - WINDOW_HEIGHT / 2;
 
-	pMap->Init();
-	pPlayer->Init();
+	pMap->Initialize();
+	pPlayer->Initialize();
 }
 void GameState::Update()
 {
@@ -85,6 +85,7 @@ void GameState::GameMain()
 	//メイン
 	pMap->Draw();
 	pPlayer->Draw(ScrolX, ScrolY);
+	pMap->Hit(pPlayer);
 }
 void GameState::GameClear()
 {

@@ -6,6 +6,7 @@
 
 #include"Sprite.h"
 #include"Texture.h"
+#include"Player.h"
 
 #define PIXEL 32
 #define WINDOW_WIDTH 800
@@ -33,6 +34,7 @@ public:
 	int GetMapBlock(int x, int y) { return mapBlock[x + y*mapWidth]; }
 	void SetMapArray(int Height, int Width, std::ifstream& data, int *array);
 
-	void Init();
+	void Initialize();
 	void Draw();
+	void Hit(Player* player);
 };
